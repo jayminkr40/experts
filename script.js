@@ -121,13 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // In a real implementation, you would send the data to your server
             // which would then forward it to anskr1901@gmail.com
             // Example using EmailJS or a backend service would go here
-            emailjs.sendForm('service_xtxfhdf', 'template_ykyoirb', form, 'anskr1905')
-    .then(() => {
-        showFormMessage(messageElementId, 'Thank you! Your message has been sent.', 'success');
-        form.reset();
-    }, (error) => {
-        showFormMessage(messageElementId, 'Sorry, there was an error sending your message. Please try again.', 'error');
-        console.error('EmailJS error:', error);
+            
     });
             
             // For demo: Log data to console and show success message
@@ -140,16 +134,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset form
             form.reset();
             
-            // In a real implementation, you would actually send the email
-            // Example using a service like EmailJS:
-            // emailjs.sendForm('service_id', 'template_id', form, 'user_id')
-            //   .then(() => {
-            //     showFormMessage(messageElementId, 'Thank you! Your message has been sent.', 'success');
-            //     form.reset();
-            //   }, (error) => {
-            //     showFormMessage(messageElementId, 'Sorry, there was an error sending your message. Please try again.', 'error');
-            //     console.error('EmailJS error:', error);
-            //   });
+            emailjs.sendForm('service_xtxfhdf', 'template_ykyoirb', form, '_CQQuQnfynDUBwW1p')
+    .then(() => {
+        showFormMessage(messageElementId, 'Thank you! Your message has been sent.', 'success');
+        form.reset();
+    }, (error) => {
+        showFormMessage(messageElementId, 'Sorry, there was an error sending your message. Please try again.', 'error');
+        console.error('EmailJS error:', error);
         }, 1500);
     }
     
