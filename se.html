@@ -1,62 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Debt Contact Form</title>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Consultation Form | Get Help</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        
+        .form-col {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .optional {
+            color: #7f8c8d;
+            font-weight: normal;
+            font-size: 0.9rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #2980b9, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, #2c3e50, #2980b9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn i {
+            margin-right: 10px;
+        }
+        
+        .notification {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            display: none;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .info-box p {
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .form-col {
+                min-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-    <script>
-        (function () {
-  emailjs.init("_CQQuQnfynDUBwW1p"); // from EmailJS
-})();
-
-document.getElementById("debtForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  emailjs.sendForm(
-    "service_xtxfhdf",
-    "template_ykyoirb",
-    this
-  ).then(
-    function () {
-      alert("Form sent successfully!");
-    },
-    function (error) {
-      alert("Failed to send form: " + error.text);
-    }
-  );
-});
-    </script>
-
-
 <body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-handshake"></i> Debt Consultation Form</h1>
+            <p>Fill out the form below to get professional advice on managing your debt</p>
+        </div>
+        
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+            <p>1. Complete all required fields (marked with *)</p>
+            <p>2. Provide details about your debt situation</p>
+            <p>3. Submit the form to send your information to our debt specialist</p>
+            <p>4. We'll contact you within 24 hours with personalized advice</p>
+        </div>
+        
+        <div id="notification" class="notification"></div>
+        
+        <div class="form-container">
+            <form id="debtForm">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="name" class="required">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="phone" class="required">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                        </div>
+                    </div>
+                    
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="debt" class="required">How Much Debt (USD)</label>
+                            <input type="number" id="debt" name="debt" required placeholder="Enter the total debt amount" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bailiff">Bailiff Name <span class="optional">(Optional)</span></label>
+                    <input type="text" id="bailiff" name="bailiff" placeholder="If applicable, enter the bailiff's name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message <span class="optional">(Optional)</span></label>
+                    <textarea id="message" name="message" placeholder="Please provide any additional details about your debt situation"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Debt Consultation Request
+                </button>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <p>Your information is confidential and will only be used to provide debt consultation services.</p>
+            <p>© 2023 Debt Consultation Services. All rights reserved.</p>
+        </div>
+    </div>
 
-  <h2>Debt Assistance Form</h2>
-
-  <form id="debtForm">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
-
-    <label>Phone:</label><br>
-    <input type="tel" name="phone" required><br><br>
-
-    <label>Reference Number:</label><br>
-    <input type="text" name="number" required><br><br>
-
-    <label>How much debt:</label><br>
-    <input type="text" name="debt" required><br><br>
-
-    <label>Bailiff Name (optional):</label><br>
-    <input type="text" name="bailiff"><br><br>
-
-    <label>Your Message (optional):</label><br>
-    <textarea name="message"></textarea><br><br>
-
-    <button type="submit">Send</button>
-  </form>
-
-  <script src="script.js"></script>
-
+    <script>
+        // Initialize EmailJS with your public key
+        emailjs.init("_CQQuQnfynDUBwW1p"); // You'll need to replace this with your actual EmailJS public key
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('debtForm');
+            const notification = document.getElementById('notification');
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Show loading state
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                // Prepare template parameters
+                const templateParams = {
+                    to_email: 'anskr1901@gmail.com',
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    debt_amount: formatCurrency(document.getElementById('debt').value),
+                    bailiff_name: document.getElementById('bailiff').value || 'Not provided',
+                    message: document.getElementById('message').value || 'No additional message provided',
+                    submission_date: new Date().toLocaleString()
+                };
+                
+                // Send email using EmailJS
+                emailjs.send('service_xtxfhdf', 'template_ykyoirb', templateParams)
+                    .then(function(response) {
+                        showNotification('Your debt consultation request has been sent successfully! We will contact you within 24 hours.', 'success');
+                        form.reset();
+                    }, function(error) {
+                        console.error('EmailJS error:', error);
+                        showNotification('There was an error sending your request. Please try again later.', 'error');
+                    })
+                    .finally(function() {
+                        // Reset button state
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+            });
+            
+            // Form validation function
+            function validateForm() {
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const debt = document.getElementById('debt').value.trim();
+                
+                if (!name) {
+                    showNotification('Please enter your full name.', 'error');
+                    return false;
+                }
+                
+                if (!email || !isValidEmail(email)) {
+                    showNotification('Please enter a valid email address.', 'error');
+                    return false;
+                }
+                
+                if (!phone) {
+                    showNotification('Please enter your phone number.', 'error');
+                    return false;
+                }
+                
+                if (!debt || parseFloat(debt) <= 0) {
+                    showNotification('Please enter a valid debt amount.', 'error');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            // Email validation
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.style.display = 'block';
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Format currency
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2
+                }).format(amount);
+            }
+            
+            // Format phone number as user types
+            document.getElementById('phone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 3 && value.length <= 6) {
+                    value = value.replace(/(\d{3})(\d+)/, '($1) $2');
+                } else if (value.length > 6) {
+                    value = value.replace(/(\d{3})(\d{3})(\d+)/, '($1) $2-$3');
+                }
+                e.target.value = value;
+            });
+            
+            // Format debt amount as user types
+            document.getElementById('debt').addEventListener('blur', function(e) {
+                if (e.target.value) {
+                    e.target.value = parseFloat(e.target.value).toFixed(2);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
