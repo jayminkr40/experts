@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bailiff Advice UK | Free Help & Support</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><span class="highlight">Bailiff</span>Advice<span class="highlight">UK</span></h1>
+                <p class="tagline">Free Help & Support for Dealing with Bailiffs</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Struggling with Bailiffs? Get <span class="highlight">Free Expert Advice</span></h1>
+                <p>We provide free, confidential advice to help you understand your rights and deal with bailiffs legally and effectively.</p>
+                <div class="hero-buttons">
+                    <a href="#contact-form" class="btn btn-primary">Get Help Now</a>
+                    <a href="about.html" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>How We Can Help You</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Know Your Rights</h3>
+                    <p>Understand exactly what bailiffs can and cannot do when they visit your home or business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Debt Validation</h3>
+                    <p>We can help you check if the debt is legitimate and if the bailiffs have followed proper procedures.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Negotiation Support</h3>
+                    <p>Guidance on negotiating payment plans and challenging unfair bailiff fees.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Stop Bailiff Action</h3>
+                    <p>Learn legal ways to stop bailiffs from entering your property or taking your goods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="contact-section">
+        <div class="container">
+            <h2>Get Free Bailiff Advice</h2>
+            <p class="section-subtitle">Fill out the form below and we'll get back to you with personalized advice</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> <strong>Helpline:</strong> 0800 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> help@bailiffadvice.uk</p>
+                    <p><i class="fas fa-clock"></i> <strong>Hours:</strong> Mon-Fri 9am-6pm, Sat 10am-2pm</p>
+                    <p><i class="fas fa-info-circle"></i> All advice is free and confidential</p>
+                    
+                    <div class="emergency-tip">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Emergency Tip</h4>
+                        <p>If bailiffs are at your door right now, you don't have to let them in unless they have a warrant for certain types of debts.</p>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="homeContactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bailiffType">Type of Bailiff Issue</label>
+                        <select id="bailiffType" name="bailiffType">
+                            <option value="">Select an option</option>
+                            <option value="council-tax">Council Tax Bailiffs</option>
+                            <option value="parking-fines">Parking Fine Bailiffs</option>
+                            <option value="ccj">CCJ Bailiffs</option>
+                            <option value="benefit-overpayment">Benefit Overpayment</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Describe Your Situation *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Please provide details about your bailiff issue..."></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a></label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Send Message & Get Advice</button>
+                    <div id="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bailiff Advice UK</h3>
+                    <p>Providing free, independent advice to help people in England and Wales deal with bailiffs and enforcement agents.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> 0800 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> help@bailiffadvice.uk</p>
+                    <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Bailiff Advice UK. All rights reserved. This is a free advice service and not a law firm.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
